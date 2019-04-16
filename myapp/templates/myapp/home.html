@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <title>Home</title>
+
+    </head>
+    <body>
+
+        
+
+        <h1> Workout Tracker </h1>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/home.css' %}">
+
+
+        <form method = "POST">
+            {% csrf_token %}
+            {{ day_form }}
+            <button type= "submit"> Submit </button>
+        </form>
+
+
+        {% for day in current_days %}
+        <br>
+        <br>
+        
+            <form action="/day/{{ day.day_name }}" method = 'GET'>
+                <div class = 'day_button'>
+                    <button type='submit'> {{ day.day_name }} </button>
+                </div>
+            </form>
+
+            <form method = 'POST'>
+                {% csrf_token %}
+                <div class = 'delete_button'>
+                    <!-- return confirm is java script that returns true if you press Okay and false if you press cancel -->
+                    <button onclick="return confirm('Are you sure you want to delete this item?');" type="submit" name="delete" value="{{ day.day_name }}"> Delete: {{ day.day_name }} </button>
+                </div>
+            </form>
+            
+        
+        
+        {% endfor %}
+        
+    </body>
+</html>
+
+

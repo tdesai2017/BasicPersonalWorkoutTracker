@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/full_view_style.css' %}">
+        <title>Latest</title>
+        
+    </head>
+    <body>
+        <form id= 'Back' action='/day/{{ name_of_day }}' method = 'GET'> </form>
+
+        <h1> Latest Info </h1>
+
+    <!-- Link I am referring too to do this: https://stackoverflow.com/questions/6803599/how-to-iterate-over-nested-dictionaries-in-django-templates -->
+        {% for key, value in format.items %}
+
+            {% for key2, value2 in value.items %}
+
+            <h4>{{ key }} ({{ key2 }}) </h4>
+
+                {% for info_rec in value2 %}
+                 
+                    Set: {{ info_rec.set_num }} 
+                    Reps: {{ info_rec.rep_num }} 
+                    Weight: {{ info_rec.weight }}
+                    
+                <div class = 'quick_read_format'>
+                  <label>{{ info_rec.set_num }}: {{ info_rec.rep_num }}x{{ info_rec.weight }}</label>
+                </div>
+                    
+                    <br>
+                
+                {% endfor %}
+
+            {% endfor %}
+
+        {% endfor %}
+        <br>
+        <button form = 'Back' type = submit>Back</button>
+
+
+      
+    </body>
+</html>

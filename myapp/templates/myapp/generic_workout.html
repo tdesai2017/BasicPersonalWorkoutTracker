@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <title>{{ name }}</title>
+
+        <!-- Literally just copied this from the internet -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css" integrity="sha256-b88RdwbRJEzRx95nCuuva+hO5ExvXXnpX+78h8DjyOE=" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/generic_workout_style.css' %}">
+
+    </head>
+    <body>
+        <h1> {{ name }} </h1>
+        <!-- You can refer to forms in a button attribute by using the form ID -->
+          
+        <form id ='delete_info_rec' method = 'POST' >{% csrf_token %}</form>
+        <form id= 'Back' action='/day/{{current_day_name}}' method = 'GET'> </form>
+        <form id= 'Home' action='/' method = 'GET'> </form>
+        <form id= 'Undo' method = 'POST'> {% csrf_token %} </form>
+    
+
+
+       
+        <form method = "POST" id= 'add_info_rec'>
+          {% csrf_token %}
+          {{ info_form }}
+          <button form = 'add_info_rec' type= "submit"> Submit </button>
+        </form>
+        <br>
+
+        <form method ="POST">
+          {% csrf_token %}
+          {{ quick_insert_form }}
+          <button type= "submit"> Submit </button>
+        </form> 
+
+        <button form = 'Back' type = submit>Back</button>
+        <button form = 'Home' type = submit>Home</button>
+        <br>
+        <button form ='Undo' type="submit" name="undo" value='{{name}}'> Undo Delete </button>
+
+
+         <!-- In python if you are iterating a list with elements of fixed lengths
+             (like a tuple of two in this case), the first element in the tuple becomes
+             the first var name after the for and the second element in the tuple becomes
+          the second var name after the for. In this example: 
+          
+          1. format = { date1: [list of workouts on date1], date2 : [list of workouts on date 2]} 
+          2. format.items -> format = [(date, [list of workouts on date1]), (date2, [list of workouts on date1])]
+          3. in for loop, date = date, list_of_info_rec = [list of workouts on date1]
+          -->
+
+        <!-- format.items converts the dictionary 'format' into a list of tuples with a key and a value -->
+        {% for date, list_of_info_rec in format.items %}
+          <h4> Date: {{date}} </h4>
+          {% for info_rec in list_of_info_rec %}
+            Set: {{ info_rec.set_num }} 
+            Reps: {{ info_rec.rep_num }} 
+            Weight: {{ info_rec.weight }}
+
+            
+            <!-- The form below is an attribute of button that refers to the form with id=delete -->
+                <div class='delete_button'>
+                  <button form ='delete_info_rec' type="submit" name="delete" value="{{ info_rec.id }}"> Delete </button>
+                </div>
+                <div class = 'quick_read_format'>
+                  <label>{{ info_rec.set_num }}: {{ info_rec.rep_num }}x{{ info_rec.weight }}</label>
+                </div>
+            <br>
+
+          {% endfor %}
+        {% endfor %}
+        <!-- When django gives a DateField a default id of id_date. So when the js sees this id_date,
+        It attaches the date picker to that html element -->
+
+        <script>
+                $(function () {
+                  $("#id_date").datepicker({
+                    format:'mm/dd/yyyy',
+                  });
+                });      
+        </script>        
+      
+  
+
+      
+    </body>
+</html>

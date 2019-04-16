@@ -1,0 +1,12 @@
+
+.quick_read_format {
+    display: inline;
+}
+
+.quick_read_format label {
+    color:goldenrod;
+}
+
+.delete_button {
+    display: inline;
+}

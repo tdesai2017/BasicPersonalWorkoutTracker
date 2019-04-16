@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <title>{{ name }}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'myapp/certain_day_style.css' %}">
+    </head>
+    <body>
+        <form id= 'Home' action='/' method = 'GET'> </form>
+        <form id= 'most_current Records' action='/fullview/{{ name }}' method = 'GET'> </form>
+
+        <h1> {{ name }} </h1>
+
+        <form method = "POST">
+            {% csrf_token %}
+            {{ workout_form }}
+            <button type= "submit"> Submit </button>
+        </form>
+        
+        <br>
+
+        <button form = 'Home' type = submit>Home</button>
+        <button form = 'most_current Records' type = submit>Most Current Records</button>
+
+         <br>
+         <br>
+        {% for workout in current_workouts %}
+        
+            <form action="/workout/{{ workout.workout_name }}" method = 'GET'>
+                <div class = 'workout_button'>
+                    <button type='submit'> {{ workout.workout_name }} </button>
+                </div>
+            </form>
+        
+            <form method = 'POST'>
+                {% csrf_token %}
+                <div class = 'delete_button'>
+                    <!-- return confirm is java script that returns true if you press Okay and false if you press cancel -->
+                    <button onclick="return confirm('Are you sure you want to delete this item?');" type="submit" name="delete" value="{{ workout.workout_name }}"> Delete: {{ workout.workout_name }} </button>
+                </div>
+            </form>
+        <br>
+
+        {% endfor %}
+
+
+    </body>
+</html>
+
+

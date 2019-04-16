@@ -1,0 +1,51 @@
+* {
+    text-align: center;
+  }
+  
+  .day_button button {
+      -moz-box-shadow:inset 0px 5px 23px 0px #ffffff;
+      -webkit-box-shadow:inset 0px 5px 23px 0px #ffffff;
+      box-shadow:inset 0px 5px 23px 0px #ffffff;
+      background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+      background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+      background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+      background-color:#ffffff;
+      -moz-border-radius:6px;
+      -webkit-border-radius:6px;
+      border-radius:6px;
+      border:2px solid #c269c2;
+      display:inline-block;
+      cursor:pointer;
+      color:#666666;
+      font-family:Arial;
+      font-size:11px;
+      font-weight:bold;
+      padding:6px 24px;
+      text-decoration:none;
+  }
+  
+  body {
+      background: repeating-linear-gradient(
+          -55deg,
+          rgb(1, 218, 199),
+          rgb(3, 228, 209) 50px,
+          white px,
+          white 20px
+        );
+  }
+  
+  body {
+      /* height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      background: black url(https://image.freepik.com/free-photo/blurred-gym-machines_1203-101.jpg) center center no-repeat;;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+    }
