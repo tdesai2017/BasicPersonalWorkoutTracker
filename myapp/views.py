@@ -119,7 +119,6 @@ def generic_workout(request, name='dumbell_press'):
 def full_view(request, name_of_day='Chest'):
         #For ever workout in list of workouts for this day
         format = {}
-        workout_dates = {}
         current_day_instance = day.objects.get(day_name = name_of_day) 
         workouts_in_this_day = workout.objects.filter(day = current_day_instance)
         
