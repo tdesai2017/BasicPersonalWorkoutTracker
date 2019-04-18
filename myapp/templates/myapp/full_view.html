@@ -19,13 +19,12 @@
             <h4>{{ key }} ({{ key2 }}) </h4>
 
                 {% for info_rec in value2 %}
-                 
+
                     Set: {{ info_rec.set_num }} 
                     Reps: {{ info_rec.rep_num }} 
                     Weight: {{ info_rec.weight }}
-                    
                 <div class = 'quick_read_format'>
-                  <label>{{ info_rec.set_num }}: {{ info_rec.rep_num }}x{{ info_rec.weight }}</label>
+                  <label> {{ info_rec.set_num }}: {{ info_rec.rep_num }}x{{ info_rec.weight }}</label>
                 </div>
                     
                     <br>

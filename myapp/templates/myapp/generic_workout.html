@@ -34,7 +34,7 @@
           {{ quick_insert_form }}
           <button type= "submit"> Submit </button>
         </form> 
-
+        <br>
         <button form = 'Back' type = submit>Back</button>
         <button form = 'Home' type = submit>Home</button>
         <br>
@@ -60,12 +60,13 @@
             Weight: {{ info_rec.weight }}
 
             
-            <!-- The form below is an attribute of button that refers to the form with id=delete -->
-                <div class='delete_button'>
-                  <button form ='delete_info_rec' type="submit" name="delete" value="{{ info_rec.id }}"> Delete </button>
-                </div>
+            
                 <div class = 'quick_read_format'>
                   <label>{{ info_rec.set_num }}: {{ info_rec.rep_num }}x{{ info_rec.weight }}</label>
+                </div>
+                <!-- The form below is an attribute of button that refers to the form with id=delete -->
+                <div class='delete_button'>
+                  <button form ='delete_info_rec' type="submit" name="delete" value="{{ info_rec.id }}"> Delete </button>
                 </div>
             <br>
 

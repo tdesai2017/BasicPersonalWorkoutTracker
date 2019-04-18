@@ -1,8 +1,29 @@
 
+* {
+    text-align: center;
+}
+
 .quick_read_format {
     display: inline;
+    padding-left: 1%;
 }
 
 .quick_read_format label {
-    color:goldenrod;
+    color: black(223, 0, 0);
+
+}
+
+
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	background-image: url(https://cdn.trendhunterstatic.com/thumbs/cool-backgrounds.jpeg);
+	background-size: cover;
+	background-position: center center;
+    background-blend-mode: color;   
+    background-attachment: fixed;
+
 }
